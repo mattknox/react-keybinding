@@ -4,6 +4,6 @@ var blacklist = {
   TEXTAREA: true
 };
 
-module.exports = function(event, targetInputs) {
-  return targetInputs && blacklist[event.target.tagName];
+module.exports = function(event, invokeOnInputs) {
+  return !invokeOnInputs && blacklist[event.target.tagName];
 };
