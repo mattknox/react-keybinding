@@ -1,7 +1,7 @@
 var React = require('react'),
-  parseEvents = require('./src/parse_events.js'),
-  isInput = require('./src/is_input.js'),
-  match = require('./src/match.js');
+    parseEvents = require('./src/parse_events.js'),
+    skip = require('./src/skip.js'),
+    match = require('./src/match.js');
 
 /**
  * A React mixin that provides keybinding support for components
@@ -28,12 +28,16 @@ var Keybinding = {
   },
 
   /**
-   * This is the only method meant to be exposed to the user: it
+   * This are the only methods meant to be exposed to the user: it
    * returns the global keybinding index for the purposes of documentation
    * generation.
    */
   getAllKeybindings: function() {
     return this.__getKeybindings();
+  },
+
+  configure: function(config) {
+
   },
 
   /**
@@ -42,7 +46,7 @@ var Keybinding = {
    * and then either fires an inline method or the .keybinding() method.
    */
   __keybinding: function(event) {
-    if (isInput(event)) return;
+    if (skip(event, !this.skipKeybindingOnInputs)) return;
     for (var i = 0; i < this.matchers.length; i++) {
       if (match(this.matchers[i].expectation, event)) {
         if (typeof this.matchers[i].action === 'function') {

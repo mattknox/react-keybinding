@@ -9,7 +9,7 @@ Declarative, lightweight, and robust keybindings mixin for React.
 * Allows listing of all currently-active keybindings
 * Run a function when a keybinding is hit or pass an action
   to the `keybinding` method of that component
-* Doesn't fire keybindings accidentally triggered in inputs,
+* By default, does not fire keybindings accidentally triggered in inputs,
   select boxes, or textareas.
 * Optionally coerce platform specific keybindings (i.e. `'⌘S'` on Mac to `'^S'` on Windows)
 
@@ -88,6 +88,14 @@ platform specific keybindings, provide a property called
 
 ```js
 keybindingsPlatformAgnostic: true,
+keybindings: { ... }
+```
+
+By default, this will not trigger keybindings if the focus is in an input
+element.  To turn this behavior off globally, provide a property called
+`skipInputs` of the  format:
+```js
+skipKeybindingOnInputs: true,
 keybindings: { ... }
 ```
 
