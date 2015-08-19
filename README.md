@@ -93,9 +93,9 @@ keybindings: { ... }
 
 By default, this will not trigger keybindings if the focus is in an input
 element.  To turn this behavior off globally, provide a property called
-`skipInputs` of the  format:
+`invokeKeybindingsOnInputs` of the  format:
 ```js
-skipKeybindingOnInputs: true,
+invokeKeybindingsOnInputs: true,
 keybindings: { ... }
 ```
 

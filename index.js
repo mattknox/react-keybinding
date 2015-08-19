@@ -46,7 +46,7 @@ var Keybinding = {
    * and then either fires an inline method or the .keybinding() method.
    */
   __keybinding: function(event) {
-    if (skip(event, !this.skipKeybindingOnInputs)) return;
+    if (skip(event, !!this.invokeKeybindingsOnInputs)) return;
     for (var i = 0; i < this.matchers.length; i++) {
       if (match(this.matchers[i].expectation, event)) {
         if (typeof this.matchers[i].action === 'function') {
