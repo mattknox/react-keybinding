@@ -5,5 +5,5 @@ var blacklist = {
 };
 
 module.exports = function(event, invokeOnInputs) {
-  return !invokeOnInputs && blacklist[event.target.tagName];
+  return event.keyCode == 17 || (!invokeOnInputs && blacklist[event.target.tagName]);
 };
