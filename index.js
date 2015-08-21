@@ -50,7 +50,7 @@ var Keybinding = {
     for (var i = 0; i < this.matchers.length; i++) {
       if (match(this.matchers[i].expectation, event)) {
         if (typeof this.matchers[i].action === 'function') {
-          this.matchers[i].action.apply(this, event);
+          this.matchers[i].action.call(this, event);
         } else {
           if (typeof this.keybinding !== 'function') {
             throw new Error('non-function keybinding action given but no .keybinding method found on component');
